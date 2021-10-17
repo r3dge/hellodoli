@@ -3,7 +3,7 @@
 /app/logs/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
-
+/.vscode
 # Email spool folder
 /app/spool/*
 
