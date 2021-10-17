@@ -15,33 +15,46 @@ Vous devez créé une base mariadb ou mysql avec un compte utilisateur associé
 Il faut configurer le fichier .env situé à la racine du répertoire avec les paramètres suivants : 
 
 APP_ENV=dev 
+
 --> mettre dev si vous êtes en environnement de dev ou prod pour l'environnement de production
 
 DATABASE_URL="mysql://dbUser:DbPassword@127.0.0.1:3306/dbName?serverVersion=mariadb-10.3.28"
+
 --> remplacer dbUser par le nom de l'utilisateur ayant les droits de lecture / écriture sur la base de données
+
 --> remplacer dbPassword par le mot de passe de l'utilisateur
+
 --> remplacer dbName par le nom de la base de données
+
 --> serverVersion=mariadb-10.3.28 : indiquer la version de la base de données mysql ou mariadb
 
 DOLIBARR_KEY=YOUR_DOLIBARR_API_KEY
+
 --> indiquer ici votre clé d'API dolibarr. Vous pouvez la générer depuis la configuration du module API REST.
 
 DOLIBARR_URL=http://localhost/dolibarr/htdocs/api/index.php/
+
 --> indiquer ici l'url de l'api Dolibarr. Vous pouvez la trouver depuis la configuration du module API REST.
 
 DOLIBARR_ACC_ID=1
+
 --> indiquer ici l'identifiant Dolibarr du compte en banque sur lequel vous voulez référencer les transactions HelloAsso.
 
 DOLIBARR_ADH_START_DATE='1st May'
+
 --> date du premier jour de l'adhésion (permet à hellodoli de créer l'adhésion pour chaque nouvel adhérent enregistré).
 
 DOLIBARR_ADH_END_DATE="30th April"
+
 --> date du dernier jour de l'adhésion.
 
 Une fois cette configuration terminée lancer les commandes suivantes : 
 
 composer install
+
 php bin/console doctrine:migrations:migrate
+
+php bin/console cache:clear
 
 se rendre ensuite sur http://votreURL/api
 
